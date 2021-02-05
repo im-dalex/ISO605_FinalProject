@@ -14,7 +14,7 @@ namespace BRC.Bussiness.Entities
         [Column("ReturnDetailId")]
         public int Id { get; set; }
         [Required]
-        [ForeignKey("RentDetail")]
+        [ForeignKey("RentDetail")] 
         public int RentDetailId { get; set; }
         [Required]
         [Column(TypeName = "date")]
