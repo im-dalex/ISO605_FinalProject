@@ -6,8 +6,8 @@ namespace TRC.Bussiness.Context
 {
     public class TRCDbContext : DbContext
     {
-        public TRCDbContext(DbContextOptions<TRCDbContext> context)
-            :base(context) { }
+        //public TRCDbContext(DbContextOptions<TRCDbContext> context)
+        //    :base(context) { }
 
         #region DbSet
 
@@ -27,7 +27,7 @@ namespace TRC.Bussiness.Context
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             var connectionString = @"Server=(localdb)\\mssqldb;Database=TRC-Developer;Trusted_Connection=True;MultipleActiveResultsSets=true";
-            optionsBuilder.UseSqlServer(connectionString, b => b.MigrationsAssembly("TeteoRentCar"));
+            optionsBuilder.UseSqlServer(connectionString);
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder) {
             base.OnModelCreating(modelBuilder);

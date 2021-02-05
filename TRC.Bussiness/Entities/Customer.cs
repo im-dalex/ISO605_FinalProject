@@ -10,7 +10,7 @@ namespace BRC.Bussiness.Entities
         public string Identification { get; set; }
         public string CreditCard { get; set; }
         public int CreditLimit { get; set; }
-        public int PersonType { get; set; }
+        public string PersonType { get; set; }
         public string Status { get; set; }
 
         public virtual ICollection<RentDetail> RentDetail { get; set; }
