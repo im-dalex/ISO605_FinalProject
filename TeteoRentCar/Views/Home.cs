@@ -1,20 +1,32 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
+using TeteoRentCar.Views.Maintenance;
 
 namespace TeteoRentCar.Views
 {
     public partial class Home : Form
     {
         private Button _activeBtn;
+        private Form _activeForm;
         public Home()
         {
             InitializeComponent();
             HideSubModulePanel();
+        }
+
+        private void OpenChildForm(Form form)
+        {
+            if (_activeForm != null) _activeForm.Close();
+
+            _activeForm = form;
+            form.TopLevel = false;
+            form.FormBorderStyle = FormBorderStyle.None;
+            form.Dock = DockStyle.Fill;
+            containerPanel.Controls.Add(form);
+            containerPanel.Tag = form;
+            form.BringToFront();
+            form.Show();
         }
 
         private void HideSubModulePanel()
@@ -65,6 +77,11 @@ namespace TeteoRentCar.Views
         private void reportsBtn_Click(object sender, EventArgs e)
         {
             ManageSubModulePanel(sender);
+        }
+
+        private void vehicleTypeBtn_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new VehicleTypeCRUD());
         }
     }
 }
