@@ -17,5 +17,10 @@ namespace TeteoRentCar
             InitializeComponent();
         }
 
+        private void OpenRentasForm_Click(object sender, EventArgs e)
+        {
+            var form = new Rents();
+            form.Show();
+        }
     }
 }

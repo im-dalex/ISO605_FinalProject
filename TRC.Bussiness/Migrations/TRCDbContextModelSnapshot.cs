@@ -103,11 +103,9 @@ namespace TRC.Bussiness.Migrations
 
                     b.Property<string>("Schedule")
                         .IsRequired()
-                        .ValueGeneratedOnAdd()
                         .HasMaxLength(30)
                         .IsUnicode(false)
-                        .HasColumnType("varchar(30)")
-                        .HasDefaultValueSql("Matutino");
+                        .HasColumnType("varchar(30)");
 
                     b.Property<string>("Status")
                         .ValueGeneratedOnAdd()

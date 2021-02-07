@@ -29,8 +29,8 @@ namespace TRC.Bussiness.EntitiesConfiguration
             builder.Property(b => b.Schedule)
                 .IsRequired()
                 .IsUnicode(false)
-                .HasMaxLength(30)
-                .HasDefaultValueSql("Matutino");
+                .HasMaxLength(30);
+            //    .HasDefaultValueSql("Matutino");
 
             builder.Property(b => b.Commission)
                .IsRequired();
