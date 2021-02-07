@@ -317,6 +317,7 @@ namespace TeteoRentCar.Views
             this.vehicleTypeBtn.Text = "Tipo de Vehiculos";
             this.vehicleTypeBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.vehicleTypeBtn.UseVisualStyleBackColor = true;
+            this.vehicleTypeBtn.Click += new System.EventHandler(this.vehicleTypeBtn_Click);
             // 
             // maintenanceBtn
             // 
