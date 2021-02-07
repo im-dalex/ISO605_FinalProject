@@ -30,7 +30,7 @@ namespace TRC.Bussiness.EntitiesConfiguration
                 .IsRequired()
                 .IsUnicode(false)
                 .HasMaxLength(30);
-            //    .HasDefaultValueSql("Matutino");
+                //.HasDefaultValueSql("Matutino");
 
             builder.Property(b => b.Commission)
                .IsRequired();
