@@ -401,6 +401,8 @@ namespace TeteoRentCar.Views
             this.Controls.Add(this.containerPanel);
             this.Controls.Add(this.header);
             this.Controls.Add(this.sideBar);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.MinimumSize = new System.Drawing.Size(900, 600);
             this.Name = "Home";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

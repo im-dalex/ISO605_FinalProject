@@ -76,6 +76,7 @@ namespace TeteoRentCar.Views
 
         private void reportsBtn_Click(object sender, EventArgs e)
         {
+            OpenChildForm(new Rents());
             ManageSubModulePanel(sender);
         }
 

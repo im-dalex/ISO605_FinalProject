@@ -1,4 +1,5 @@
 ﻿using BRC.Bussiness.Entities;
+using MoreLinq.Extensions;
 using Syncfusion.Pdf;
 using Syncfusion.Pdf.Graphics;
 using Syncfusion.Pdf.Grid;
@@ -11,12 +12,14 @@ using System.Drawing;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
+using TeteoRentCar.Utilities;
 using TRC.Bussiness.ViewModels;
 
 namespace TeteoRentCar
 {
     public partial class Rents : Form
     {
+        private IList<RentsVM> Data { get; set; }
         public Rents()
         {
             InitializeComponent();
@@ -99,17 +102,17 @@ namespace TeteoRentCar
             });
             #endregion
 
-            IList<RentsVM> data = new List<RentsVM>();
+            Data = new List<RentsVM>();
 
             foreach (var rent in rents)
-                data.Add(new RentsVM(rent));
+                Data.Add(new RentsVM(rent));
 
-            GridRents.DataSource = data;
+            GridRents.DataSource = Data.ToDataTable();
         }
 
         private void PdfBtn_Click(object sender, EventArgs e)
         {
-            CreatePDF(GridRents.DataSource);
+            CreatePDF((GridRents.DataSource as DataTable).DefaultView.ToTable());
         }
 
         private void CreatePDF(object data)
@@ -138,6 +141,36 @@ namespace TeteoRentCar
             var wb = new WebBrowser();
             wb.Navigate(fullPath);
 
+        }
+
+        private void SearchTextBox_TextChanged(object sender, EventArgs e)
+        {
+            string searchString = SearchTextBox.Text.Trim();               
+            (GridRents.DataSource as DataTable).DefaultView.RowFilter = string.Format("CedulaCliente LIKE '%{0}%'", searchString);
+
+            //if (searchString != string.Empty)
+            //{
+            //    foreach (DataGridViewRow row in GridRents.Rows)
+            //    {
+
+            //        //BindingSource bs = new BindingSource();
+            //        //bs.DataSource = GridRents.DataSource;
+            //        //bs.Filter = GridRents.Columns["CedulaCliente"].HeaderText.ToString() + " LIKE '%" + searchString + "%'";
+            //        //GridRents.DataSource = bs;
+
+            //        //dataTable1.DefaultView.RowFilter = $"[CedulaCliente] LIKE '%searchString%'";
+
+            //        if (row.Cells["CedulaCliente"].Value.ToString().Contains(searchString))
+            //        {
+            //            GridRents.CurrentRow.Selected = false;
+            //            GridRents.Rows[row.Index].Selected = true;
+            //            int index = row.Index;
+            //            GridRents.FirstDisplayedScrollingRowIndex = index;
+
+            //            break;
+            //        }
+            //    }
+            //}
         }
     }
 }
