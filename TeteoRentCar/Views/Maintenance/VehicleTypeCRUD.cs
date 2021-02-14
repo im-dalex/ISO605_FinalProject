@@ -31,5 +31,22 @@ namespace TeteoRentCar.Views.Maintenance
             var data = await _vehicleType.GetAll();
             dataGridView1.DataSource = data;
         }
+
+        private async void SaveEntity()
+        {
+            //cbStatus.SelectedItem;
+            var vehicleType = new VehicleType()
+            {
+                Description = txtDescription.Text.Trim(),
+                Status = "A"
+            };
+            await _vehicleType.Add(vehicleType);
+            await _vehicleType.SaveAsync();
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            SaveEntity();
+        }
     }
 }
