@@ -301,6 +301,7 @@ namespace TeteoRentCar.Views
             this.brandBtn.Text = "Marcas";
             this.brandBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.brandBtn.UseVisualStyleBackColor = true;
+            this.brandBtn.Click += new System.EventHandler(this.brandBtn_Click);
             // 
             // vehicleTypeBtn
             // 

@@ -26,7 +26,7 @@ namespace TRC.Bussiness.Context
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            var connectionString = @"Server=(localdb)\\mssqldb;Database=TRC-Developer;Trusted_Connection=True";
+            var connectionString = @"Server=(localdb)\MSSQLLocalDB;Database=TRC-Developer;Trusted_Connection=True";
             optionsBuilder.UseSqlServer(connectionString);
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder) {
