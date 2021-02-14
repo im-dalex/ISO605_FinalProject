@@ -29,7 +29,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Views\Reports\" />
     <Folder Include="Views\Services\" />
   </ItemGroup>
 
