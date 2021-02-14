@@ -33,7 +33,7 @@ namespace TRC.Bussiness.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "varchar(100)", unicode: false, maxLength: 100, nullable: false),
                     Identification = table.Column<string>(type: "varchar(15)", unicode: false, maxLength: 15, nullable: false),
-                    Schedule = table.Column<string>(type: "varchar(30)", unicode: false, maxLength: 30, nullable: false, defaultValueSql: "Matutino"),
+                    Schedule = table.Column<string>(type: "varchar(30)", unicode: false, maxLength: 30, nullable: false),
                     Commission = table.Column<int>(type: "int", nullable: false),
                     EntryDate = table.Column<DateTime>(type: "date", nullable: false, defaultValueSql: "getdate()"),
                     Status = table.Column<string>(type: "nvarchar(max)", nullable: true, defaultValue: "A")

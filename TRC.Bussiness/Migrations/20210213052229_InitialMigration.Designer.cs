@@ -10,7 +10,7 @@ using TRC.Bussiness.Context;
 namespace TRC.Bussiness.Migrations
 {
     [DbContext(typeof(TRCDbContext))]
-    [Migration("20210205055826_InitialMigration")]
+    [Migration("20210213052229_InitialMigration")]
     partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -105,11 +105,9 @@ namespace TRC.Bussiness.Migrations
 
                     b.Property<string>("Schedule")
                         .IsRequired()
-                        .ValueGeneratedOnAdd()
                         .HasMaxLength(30)
                         .IsUnicode(false)
-                        .HasColumnType("varchar(30)")
-                        .HasDefaultValueSql("Matutino");
+                        .HasColumnType("varchar(30)");
 
                     b.Property<string>("Status")
                         .ValueGeneratedOnAdd()
