@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TeteoRentCar.Views;
 
 namespace TeteoRentCar
 {
@@ -17,10 +18,24 @@ namespace TeteoRentCar
             InitializeComponent();
         }
 
-        private void OpenRentasForm_Click(object sender, EventArgs e)
+        private void btnLogin_Click(object sender, EventArgs e)
         {
-            var form = new Rents();
-            form.Show();
+            if (txtUser.Text.Trim() == string.Empty || txtPwd.Text.Trim() == string.Empty)
+            {
+                MessageBox.Show("Ningun dato debe estar vacio. lol", "Login error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (txtUser.Text.Trim() != "Admin" || txtPwd.Text.Trim() != "12345")
+            {
+               MessageBox.Show("Los datos son incorrectos. Intentelo nuevamente", "Login error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            var home = new Home();
+            home.Show();
+
+            Hide();
         }
     }
 }
