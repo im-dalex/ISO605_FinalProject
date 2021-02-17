@@ -81,17 +81,17 @@ namespace TeteoRentCar.Views
 
         private void rentBtn_Click(object sender, EventArgs e)
         {
-            ActionControl.OpenChildForm(new RentDetail(), containerPanel);
+            ActionControl.OpenChildForm(new RentDetailService(), containerPanel);
         }
 
         private void inspectionBtn_Click(object sender, EventArgs e)
         {
-            ActionControl.OpenChildForm(new Inspection(), containerPanel);
+            ActionControl.OpenChildForm(new InspectionService(), containerPanel);
         }
 
         private void returnBtn_Click(object sender, EventArgs e)
         {
-            ActionControl.OpenChildForm(new ReturnDetail(), containerPanel);
+            ActionControl.OpenChildForm(new ReturnDetailService(), containerPanel);
         }
     }
 }

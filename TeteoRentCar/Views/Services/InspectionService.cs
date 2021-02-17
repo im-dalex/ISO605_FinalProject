@@ -8,9 +8,9 @@ using System.Windows.Forms;
 
 namespace TeteoRentCar.Views.Services
 {
-    public partial class ReturnDetail : Form
+    public partial class InspectionService : Form
     {
-        public ReturnDetail()
+        public InspectionService()
         {
             InitializeComponent();
         }

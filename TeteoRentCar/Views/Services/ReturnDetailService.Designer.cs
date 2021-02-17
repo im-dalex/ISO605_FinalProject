@@ -1,7 +1,7 @@
 ﻿
 namespace TeteoRentCar.Views.Services
 {
-    partial class ReturnDetail
+    partial class ReturnDetailService
     {
         /// <summary>
         /// Required designer variable.

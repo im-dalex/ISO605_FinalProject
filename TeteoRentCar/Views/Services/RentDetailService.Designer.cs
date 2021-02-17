@@ -1,7 +1,7 @@
 ﻿
 namespace TeteoRentCar.Views.Services
 {
-    partial class RentDetail
+    partial class RentDetailService
     {
         /// <summary>
         /// Required designer variable.
@@ -157,6 +157,7 @@ namespace TeteoRentCar.Views.Services
             // dpRentDate
             // 
             this.dpRentDate.Location = new System.Drawing.Point(125, 256);
+            this.dpRentDate.MinDate = new System.DateTime(2021, 2, 17, 0, 0, 0, 0);
             this.dpRentDate.Name = "dpRentDate";
             this.dpRentDate.Size = new System.Drawing.Size(245, 27);
             this.dpRentDate.TabIndex = 16;
@@ -187,6 +188,9 @@ namespace TeteoRentCar.Views.Services
             // 
             this.cbStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbStatus.FormattingEnabled = true;
+            this.cbStatus.Items.AddRange(new object[] {
+            "A",
+            "I"});
             this.cbStatus.Location = new System.Drawing.Point(125, 486);
             this.cbStatus.Name = "cbStatus";
             this.cbStatus.Size = new System.Drawing.Size(160, 28);
@@ -240,8 +244,9 @@ namespace TeteoRentCar.Views.Services
             this.btnSave.TabIndex = 25;
             this.btnSave.Text = "Guardar";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // RentDetail
+            // RentDetailService
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -268,8 +273,9 @@ namespace TeteoRentCar.Views.Services
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Name = "RentDetail";
+            this.Name = "RentDetailService";
             this.Text = "Cliente:";
+            this.Load += new System.EventHandler(this.RentDetailService_Load);
             ((System.ComponentModel.ISupportInitialize)(this.nPriceByDay)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nRentDays)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rentDataGrid)).EndInit();
