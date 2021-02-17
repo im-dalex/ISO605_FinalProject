@@ -41,6 +41,26 @@ namespace TRC.Bussiness.Repository
             return await query.ToListAsync();
         }
 
+        //public virtual async Task<IEnumerable<T>> GetAll(Dictionary<string,string> includes)
+        //{
+        //    IQueryable<T> query = _set;
+
+        //    foreach (var entity in includes)
+        //    {
+        //        //query = query.Include(entity.Key);
+        //        if (entity.Value.Any())
+        //        {
+        //                query = query.Include(entity.Key).ThenInclude(entity.Value);
+        //        }
+        //        else
+        //        {
+        //            query = query.Include(entity.Key);
+        //        }
+        //    }
+
+        //    return await query.ToListAsync();
+        //}
+
         public virtual async Task<T> Get(int Id, params string[] includes)
         {
             IQueryable<T> query = _set;

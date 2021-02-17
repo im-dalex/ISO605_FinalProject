@@ -72,8 +72,11 @@ namespace TeteoRentCar.Views.Maintenance
         {
             ActionControl.ClearTextBoxes(txtDescription);
             cbStatus.SelectedIndex = 0;
-            cbBrand.SelectedIndex = 0;
-            cbType.SelectedIndex = 0;
+
+            if (cbBrand.Items.Count > 0)
+                cbBrand.SelectedIndex = 0;
+            if (cbType.Items.Count > 0)
+                cbType.SelectedIndex = 0;
         }
 
         private async Task SaveEntity()
@@ -148,6 +151,8 @@ namespace TeteoRentCar.Views.Maintenance
 
         private async void DeleteBtn_Click(object sender, EventArgs e)
         {
+            if (dataGridView1.CurrentRow == null) return;
+
             var id = GetIdCurrentRow();
 
             DialogResult dialogResult = MessageBox.Show($"Esta seguro que quiere eliminar el registro #{id}?", "Eliminar",
@@ -165,6 +170,7 @@ namespace TeteoRentCar.Views.Maintenance
 
         private async Task EditionModeToggle()
         {
+
             if (_editionMode)
             {
                 EditBtn.Text = "Editar";
@@ -195,6 +201,8 @@ namespace TeteoRentCar.Views.Maintenance
 
         private async void EditBtn_Click(object sender, EventArgs e)
         {
+            if (dataGridView1.CurrentRow == null) return;
+
             await EditionModeToggle();
         }
 
