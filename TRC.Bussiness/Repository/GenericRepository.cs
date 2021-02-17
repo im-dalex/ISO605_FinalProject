@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TRC.Bussiness.Context;
@@ -30,13 +31,35 @@ namespace TRC.Bussiness.Repository
             return true;
         }
         
-        public virtual async Task<IEnumerable<T>> GetAll()
+        public virtual async Task<IEnumerable<T>> GetAll(params string[] includes)
         {
-            return await _set.ToListAsync();
+            IQueryable<T> query = _set;
+
+            foreach (var entity in includes)
+               query = query.Include(entity);
+
+            return await query.ToListAsync();
+        }
+
+        public virtual async Task<T> Get(int Id, params string[] includes)
+        {
+            IQueryable<T> query = _set;
+
+            foreach (var entity in includes)
+                query = query.Include(entity);
+
+            return await query.FirstOrDefaultAsync(e => e.Id == Id);
         }
 
         public virtual void Delete(T entity)
         {
+            entity.Status = "I";
+            Update(entity);
+        }
+
+        public virtual async Task Delete(int id)
+        {
+            var entity = await _set.FirstOrDefaultAsync(e => e.Id == id);
             entity.Status = "I";
             Update(entity);
         }

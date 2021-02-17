@@ -1,7 +1,7 @@
 ﻿
 namespace TeteoRentCar.Views.Maintenance
 {
-    partial class VehicleTypeCRUD
+    partial class VehicleModelCRUD
     {
         /// <summary>
         /// Required designer variable.
@@ -38,6 +38,10 @@ namespace TeteoRentCar.Views.Maintenance
             this.label2 = new System.Windows.Forms.Label();
             this.cbStatus = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.cbBrand = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.cbType = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -56,7 +60,7 @@ namespace TeteoRentCar.Views.Maintenance
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(138, 341);
+            this.btnSave.Location = new System.Drawing.Point(138, 438);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(94, 29);
             this.btnSave.TabIndex = 1;
@@ -66,7 +70,7 @@ namespace TeteoRentCar.Views.Maintenance
             // 
             // EditBtn
             // 
-            this.EditBtn.Location = new System.Drawing.Point(527, 474);
+            this.EditBtn.Location = new System.Drawing.Point(490, 477);
             this.EditBtn.Name = "EditBtn";
             this.EditBtn.Size = new System.Drawing.Size(94, 29);
             this.EditBtn.TabIndex = 2;
@@ -76,7 +80,7 @@ namespace TeteoRentCar.Views.Maintenance
             // 
             // DeleteBtn
             // 
-            this.DeleteBtn.Location = new System.Drawing.Point(749, 474);
+            this.DeleteBtn.Location = new System.Drawing.Point(712, 477);
             this.DeleteBtn.Name = "DeleteBtn";
             this.DeleteBtn.Size = new System.Drawing.Size(94, 29);
             this.DeleteBtn.TabIndex = 3;
@@ -87,7 +91,7 @@ namespace TeteoRentCar.Views.Maintenance
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(42, 197);
+            this.label1.Location = new System.Drawing.Point(42, 211);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(90, 20);
             this.label1.TabIndex = 4;
@@ -99,13 +103,13 @@ namespace TeteoRentCar.Views.Maintenance
             this.txtDescription.MaxLength = 200;
             this.txtDescription.Multiline = true;
             this.txtDescription.Name = "txtDescription";
-            this.txtDescription.Size = new System.Drawing.Size(160, 78);
+            this.txtDescription.Size = new System.Drawing.Size(160, 85);
             this.txtDescription.TabIndex = 5;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(42, 281);
+            this.label2.Location = new System.Drawing.Point(75, 387);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(57, 20);
             this.label2.TabIndex = 6;
@@ -118,7 +122,7 @@ namespace TeteoRentCar.Views.Maintenance
             this.cbStatus.Items.AddRange(new object[] {
             "A",
             "I"});
-            this.cbStatus.Location = new System.Drawing.Point(138, 278);
+            this.cbStatus.Location = new System.Drawing.Point(138, 384);
             this.cbStatus.Name = "cbStatus";
             this.cbStatus.Size = new System.Drawing.Size(160, 28);
             this.cbStatus.TabIndex = 7;
@@ -129,16 +133,56 @@ namespace TeteoRentCar.Views.Maintenance
             this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label3.Location = new System.Drawing.Point(391, 46);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(269, 41);
+            this.label3.Size = new System.Drawing.Size(314, 41);
             this.label3.TabIndex = 8;
-            this.label3.Text = "Tipos de vehiculos";
+            this.label3.Text = "Modelos de vehiculos";
             // 
-            // VehicleTypeCRUD
+            // cbBrand
+            // 
+            this.cbBrand.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbBrand.FormattingEnabled = true;
+            this.cbBrand.Location = new System.Drawing.Point(138, 338);
+            this.cbBrand.Name = "cbBrand";
+            this.cbBrand.Size = new System.Drawing.Size(160, 28);
+            this.cbBrand.TabIndex = 10;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(20, 341);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(112, 20);
+            this.label4.TabIndex = 9;
+            this.label4.Text = "Marca vehiculo:";
+            // 
+            // cbType
+            // 
+            this.cbType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbType.FormattingEnabled = true;
+            this.cbType.Location = new System.Drawing.Point(138, 298);
+            this.cbType.Name = "cbType";
+            this.cbType.Size = new System.Drawing.Size(160, 28);
+            this.cbType.TabIndex = 12;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(31, 301);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(101, 20);
+            this.label5.TabIndex = 11;
+            this.label5.Text = "Tipo vehiculo:";
+            // 
+            // VehicleModelCRUD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(1054, 573);
+            this.Controls.Add(this.cbType);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.cbBrand);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.cbStatus);
             this.Controls.Add(this.label2);
@@ -148,9 +192,9 @@ namespace TeteoRentCar.Views.Maintenance
             this.Controls.Add(this.EditBtn);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.dataGridView1);
-            this.Name = "VehicleTypeCRUD";
-            this.Text = "VehicleTypeCRUD";
-            this.Load += new System.EventHandler(this.VehicleTypeCRUD_Load);
+            this.Name = "VehicleModelCRUD";
+            this.Text = "VehicleModelCRUD";
+            this.Load += new System.EventHandler(this.VehicleModelCRUD_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -168,5 +212,9 @@ namespace TeteoRentCar.Views.Maintenance
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox cbStatus;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ComboBox cbBrand;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox cbType;
+        private System.Windows.Forms.Label label5;
     }
 }

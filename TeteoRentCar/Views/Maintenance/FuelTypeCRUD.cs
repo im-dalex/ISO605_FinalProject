@@ -14,19 +14,19 @@ using TRC.Bussiness.Repository;
 
 namespace TeteoRentCar.Views.Maintenance
 {
-    public partial class VehicleTypeCRUD : Form
+    public partial class FuelTypeCRUD : Form
     {
-        private GenericRepository<VehicleType> _vehicleType;
-        private VehicleType _entityToEdit;
+        private GenericRepository<FuelType> _FuelType;
+        private FuelType _EntityToEdit;
         private bool _editionMode;
         private int _gridViewLastSelectedRowIndex = 0;
-        public VehicleTypeCRUD()
+        public FuelTypeCRUD()
         {
-            _vehicleType = new GenericRepository<VehicleType>();
+            _FuelType = new GenericRepository<FuelType>();
             InitializeComponent();
         }
 
-        private async void VehicleTypeCRUD_Load(object sender, EventArgs e)
+        private async void FuelTypeCRUD_Load(object sender, EventArgs e)
         {
            await RefreshGridView();
            CleanForm();
@@ -39,9 +39,9 @@ namespace TeteoRentCar.Views.Maintenance
 
         private async Task RefreshGridView()
         {
-            var data = await _vehicleType.GetAll();
+            var data = await _FuelType.GetAll();
             dataGridView1.DataSource = data;
-            dataGridView1.Columns[nameof(VehicleType.VehicleModel)].Visible = false;
+            dataGridView1.Columns[nameof(FuelType.Vehicle)].Visible = false;
         }
         private void CleanForm()
         {
@@ -51,21 +51,21 @@ namespace TeteoRentCar.Views.Maintenance
 
         private async Task SaveEntity()
         {
-            var vehicleType = new VehicleType()
+            var FuelType = new FuelType()
             {
                 Description = txtDescription.Text.Trim(),
                 Status = cbStatus.Text
             };
-            await _vehicleType.Add(vehicleType);
-            await _vehicleType.SaveAsync();
+            await _FuelType.Add(FuelType);
+            await _FuelType.SaveAsync();
         }
         private async Task UpdateEntity()
         {
-            _entityToEdit.Description = txtDescription.Text;
-            _entityToEdit.Status = cbStatus.Text;
+            _EntityToEdit.Description = txtDescription.Text;
+            _EntityToEdit.Status = cbStatus.Text;
 
-            _vehicleType.Update(_entityToEdit);
-            await _vehicleType.SaveAsync();
+            _FuelType.Update(_EntityToEdit);
+            await _FuelType.SaveAsync();
         }
 
         private bool IsFormValid()
@@ -84,9 +84,8 @@ namespace TeteoRentCar.Views.Maintenance
 
             if (_editionMode)
             {
-                string msj = $"Esta seguro que quiere editar el registro #{_entityToEdit.Id}? Esta acción no se podra deshacer.";
+                string msj = $"Esta seguro que quiere editar el registro #{_EntityToEdit.Id}? Esta acción no se podra deshacer.";
                 DialogResult dialogResult = MessageBox.Show(msj, "Modificar",MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-
 
                 if (dialogResult == DialogResult.Yes)
                 {
@@ -110,24 +109,27 @@ namespace TeteoRentCar.Views.Maintenance
 
         }
 
-        private async Task DeleteEntity(VehicleType vehicleType)
+        private async Task DeleteEntity(FuelType FuelType)
         {
-            _vehicleType.Delete(vehicleType);
-            await _vehicleType.SaveAsync();
+            _FuelType.Delete(FuelType);
+            await _FuelType.SaveAsync();
         }
 
         private async void DeleteBtn_Click(object sender, EventArgs e)
         {
-            VehicleType vehicleType = (VehicleType)dataGridView1.CurrentRow.DataBoundItem;
+            FuelType FuelType = (FuelType)dataGridView1.CurrentRow.DataBoundItem;
 
-            DialogResult dialogResult = MessageBox.Show($"Esta seguro que quiere eliminar el registro #{vehicleType.Id}?", "Eliminar",
+            DialogResult dialogResult = MessageBox.Show($"Esta seguro que quiere eliminar el registro #{FuelType.Id}?", "Eliminar",
                                             MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
             if (dialogResult == DialogResult.Yes)
             {
-                await DeleteEntity(vehicleType);
+                await DeleteEntity(FuelType);
                 await RefreshGridView();
             }
+
+            dataGridView1.FirstDisplayedScrollingRowIndex = _gridViewLastSelectedRowIndex;
+
         }
 
         private void EditionModeToggle()
@@ -135,18 +137,18 @@ namespace TeteoRentCar.Views.Maintenance
             if (_editionMode)
             {
                 EditBtn.Text = "Editar";
-                _entityToEdit = null;
+                _EntityToEdit = null;
                 CleanForm();
             }
             else
             {
                 EditBtn.Text = "Cancelar modificacion";
 
-                VehicleType vehicleType = (VehicleType)dataGridView1.CurrentRow.DataBoundItem;
-                _entityToEdit = vehicleType;
+                FuelType FuelType = (FuelType)dataGridView1.CurrentRow.DataBoundItem;
+                _EntityToEdit = FuelType;
 
-                txtDescription.Text = vehicleType.Description;
-                cbStatus.SelectedItem = vehicleType.Status;
+                txtDescription.Text = FuelType.Description;
+                cbStatus.SelectedItem = FuelType.Status;
             }
 
             DeleteBtn.Enabled = !DeleteBtn.Enabled;

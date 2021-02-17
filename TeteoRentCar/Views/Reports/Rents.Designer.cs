@@ -101,6 +101,7 @@ namespace TeteoRentCar
             this.MaximizeBox = false;
             this.Name = "Rents";
             this.Text = "Rentas";
+            this.Load += new System.EventHandler(this.Rents_Load);
             ((System.ComponentModel.ISupportInitialize)(this.GridRents)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

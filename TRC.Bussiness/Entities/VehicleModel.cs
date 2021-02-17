@@ -25,7 +25,7 @@ namespace BRC.Bussiness.Entities
         [DefaultValue('A')]
         public string Status { get; set; }
 
-        public VehicleType VehicleType { get; set; }
+        public virtual VehicleType VehicleType { get; set; }
         public virtual VehicleBrand VehicleBrand { get; set; }
         public virtual ICollection<Vehicle> Vehicle { get; set; }
     }

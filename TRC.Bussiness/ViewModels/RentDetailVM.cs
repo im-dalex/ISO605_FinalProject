@@ -7,9 +7,9 @@ using System.Text;
 
 namespace TRC.Bussiness.ViewModels
 {
-   public class RentsVM
+   public class RentDetailVM
     {
-        public RentsVM(RentDetail rent)
+        public RentDetailVM(RentDetail rent)
         {
             Fecha = rent.RentDate;
             Cliente = rent.Customer.Name;

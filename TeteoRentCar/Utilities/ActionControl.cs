@@ -46,7 +46,7 @@ namespace TeteoRentCar.Utilities
             childForm.Show();
         }
         
-        public static void ClearTextBoxes(TextBox[] controls)
+        public static void ClearTextBoxes(params TextBox[] controls)
         {
             foreach (var control in controls)
             {

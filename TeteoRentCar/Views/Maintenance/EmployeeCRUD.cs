@@ -14,19 +14,20 @@ using TRC.Bussiness.Repository;
 
 namespace TeteoRentCar.Views.Maintenance
 {
-    public partial class VehicleTypeCRUD : Form
+    public partial class EmployeeCRUD : Form
     {
-        private GenericRepository<VehicleType> _vehicleType;
-        private VehicleType _entityToEdit;
+        private GenericRepository<Employee> _Employee;
+        private Employee _entityToEdit;
         private bool _editionMode;
         private int _gridViewLastSelectedRowIndex = 0;
-        public VehicleTypeCRUD()
+
+        public EmployeeCRUD()
         {
-            _vehicleType = new GenericRepository<VehicleType>();
+            _Employee = new GenericRepository<Employee>();
             InitializeComponent();
         }
 
-        private async void VehicleTypeCRUD_Load(object sender, EventArgs e)
+        private async void EmployeeCRUD_Load(object sender, EventArgs e)
         {
            await RefreshGridView();
            CleanForm();
@@ -39,45 +40,64 @@ namespace TeteoRentCar.Views.Maintenance
 
         private async Task RefreshGridView()
         {
-            var data = await _vehicleType.GetAll();
-            dataGridView1.DataSource = data;
-            dataGridView1.Columns[nameof(VehicleType.VehicleModel)].Visible = false;
+            var data = await _Employee.GetAll();
+
+            dataGridView1.DataSource = data.Select( d => new {
+                d.Id,
+                d.Name,
+                d.Identification,
+                d.Schedule,
+                d.Commission,
+                d.EntryDate,
+                d.Status
+            }).ToList();
         }
+
         private void CleanForm()
         {
-            ActionControl.ClearTextBoxes(txtDescription);
+            ActionControl.ClearTextBoxes(txtName);
+            cbSchedule.SelectedIndex = 0;
             cbStatus.SelectedIndex = 0;
+            numericUpDown1.Value = 0;
+            mTxtIdentification.Text = null;
         }
 
         private async Task SaveEntity()
         {
-            var vehicleType = new VehicleType()
+            var Employee = new Employee()
             {
-                Description = txtDescription.Text.Trim(),
+                Name = txtName.Text.Trim(),
+                Identification = mTxtIdentification.Text.Trim(),
+                Schedule = cbSchedule.Text,
+                Commission = (int)numericUpDown1.Value,
                 Status = cbStatus.Text
             };
-            await _vehicleType.Add(vehicleType);
-            await _vehicleType.SaveAsync();
+            await _Employee.Add(Employee);
+            await _Employee.SaveAsync();
         }
         private async Task UpdateEntity()
         {
-            _entityToEdit.Description = txtDescription.Text;
+            _entityToEdit.Name = txtName.Text.Trim();
+            _entityToEdit.Identification = mTxtIdentification.Text.Trim();
+            _entityToEdit.Schedule = cbSchedule.Text;
+            _entityToEdit.Commission = (int)numericUpDown1.Value;
             _entityToEdit.Status = cbStatus.Text;
 
-            _vehicleType.Update(_entityToEdit);
-            await _vehicleType.SaveAsync();
+            _Employee.Update(_entityToEdit);
+            await _Employee.SaveAsync();
         }
 
         private bool IsFormValid()
         {
-            return txtDescription.Text.Trim().Length > 0 && txtDescription.Text.Trim().Length <= 200;
+            return txtName.Text.Trim().Length > 0 && txtName.Text.Trim().Length <= 100
+                && Identification.Validate(mTxtIdentification.Text.Trim());
         }
 
         private async void btnSave_Click(object sender, EventArgs e)
         {
             if (!IsFormValid())
             {
-                string msj = "De lo mio, ten en cuenta que no me puedes de dejar la descripcion vacia.";
+                string msj = "De lo mio, ten en cuenta que no me puedes de dejar los datos vacios.";
                 MessageBox.Show(msj, "Revise los datos!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
@@ -87,11 +107,10 @@ namespace TeteoRentCar.Views.Maintenance
                 string msj = $"Esta seguro que quiere editar el registro #{_entityToEdit.Id}? Esta acción no se podra deshacer.";
                 DialogResult dialogResult = MessageBox.Show(msj, "Modificar",MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
-
                 if (dialogResult == DialogResult.Yes)
                 {
                     await UpdateEntity();
-                    EditionModeToggle();
+                    await EditionModeToggle();
                     await RefreshGridView();
                 }
                 else
@@ -110,43 +129,47 @@ namespace TeteoRentCar.Views.Maintenance
 
         }
 
-        private async Task DeleteEntity(VehicleType vehicleType)
+        private async Task DeleteEntity(int Id)
         {
-            _vehicleType.Delete(vehicleType);
-            await _vehicleType.SaveAsync();
+            await _Employee.Delete(Id);
+            await _Employee.SaveAsync();
         }
 
         private async void DeleteBtn_Click(object sender, EventArgs e)
         {
-            VehicleType vehicleType = (VehicleType)dataGridView1.CurrentRow.DataBoundItem;
+            var id = GetIdCurrentRow();
 
-            DialogResult dialogResult = MessageBox.Show($"Esta seguro que quiere eliminar el registro #{vehicleType.Id}?", "Eliminar",
+            DialogResult dialogResult = MessageBox.Show($"Esta seguro que quiere eliminar el registro #{id}?", "Eliminar",
                                             MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
             if (dialogResult == DialogResult.Yes)
             {
-                await DeleteEntity(vehicleType);
+                await DeleteEntity(id);
                 await RefreshGridView();
             }
+
+            dataGridView1.FirstDisplayedScrollingRowIndex = _gridViewLastSelectedRowIndex;
+
         }
 
-        private void EditionModeToggle()
+        private async Task EditionModeToggle()
         {
             if (_editionMode)
             {
                 EditBtn.Text = "Editar";
-                _entityToEdit = null;
                 CleanForm();
             }
             else
             {
                 EditBtn.Text = "Cancelar modificacion";
 
-                VehicleType vehicleType = (VehicleType)dataGridView1.CurrentRow.DataBoundItem;
-                _entityToEdit = vehicleType;
-
-                txtDescription.Text = vehicleType.Description;
-                cbStatus.SelectedItem = vehicleType.Status;
+                _entityToEdit = await _Employee.Get(GetIdCurrentRow());
+                txtName.Text = _entityToEdit.Name;
+                mTxtIdentification.Text = _entityToEdit.Identification;
+                cbSchedule.Text = _entityToEdit.Schedule;
+                numericUpDown1.Value = _entityToEdit.Commission;
+                cbStatus.SelectedItem = _entityToEdit.Status;
+                
             }
 
             DeleteBtn.Enabled = !DeleteBtn.Enabled;
@@ -155,9 +178,14 @@ namespace TeteoRentCar.Views.Maintenance
             _editionMode = !_editionMode;
         }
 
-        private void EditBtn_Click(object sender, EventArgs e)
+        private int GetIdCurrentRow()
         {
-            EditionModeToggle();
+            return int.TryParse(dataGridView1.CurrentRow.Cells[nameof(Employee.Id)].Value.ToString(), out int id) ? id : 0;
+        }
+
+        private async void EditBtn_Click(object sender, EventArgs e)
+        {
+            await EditionModeToggle();
         }
 
     }

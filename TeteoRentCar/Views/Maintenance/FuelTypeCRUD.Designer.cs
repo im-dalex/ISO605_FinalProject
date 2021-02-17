@@ -1,7 +1,7 @@
 ﻿
 namespace TeteoRentCar.Views.Maintenance
 {
-    partial class VehicleTypeCRUD
+    partial class FuelTypeCRUD
     {
         /// <summary>
         /// Required designer variable.
@@ -66,7 +66,7 @@ namespace TeteoRentCar.Views.Maintenance
             // 
             // EditBtn
             // 
-            this.EditBtn.Location = new System.Drawing.Point(527, 474);
+            this.EditBtn.Location = new System.Drawing.Point(490, 477);
             this.EditBtn.Name = "EditBtn";
             this.EditBtn.Size = new System.Drawing.Size(94, 29);
             this.EditBtn.TabIndex = 2;
@@ -76,7 +76,7 @@ namespace TeteoRentCar.Views.Maintenance
             // 
             // DeleteBtn
             // 
-            this.DeleteBtn.Location = new System.Drawing.Point(749, 474);
+            this.DeleteBtn.Location = new System.Drawing.Point(712, 477);
             this.DeleteBtn.Name = "DeleteBtn";
             this.DeleteBtn.Size = new System.Drawing.Size(94, 29);
             this.DeleteBtn.TabIndex = 3;
@@ -127,13 +127,13 @@ namespace TeteoRentCar.Views.Maintenance
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(391, 46);
+            this.label3.Location = new System.Drawing.Point(421, 46);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(269, 41);
+            this.label3.Size = new System.Drawing.Size(205, 41);
             this.label3.TabIndex = 8;
-            this.label3.Text = "Tipos de vehiculos";
+            this.label3.Text = "Combustibles";
             // 
-            // VehicleTypeCRUD
+            // FuelTypeCRUD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -148,9 +148,9 @@ namespace TeteoRentCar.Views.Maintenance
             this.Controls.Add(this.EditBtn);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.dataGridView1);
-            this.Name = "VehicleTypeCRUD";
-            this.Text = "VehicleTypeCRUD";
-            this.Load += new System.EventHandler(this.VehicleTypeCRUD_Load);
+            this.Name = "FuelTypeCRUD";
+            this.Text = "FuelTypeCRUD";
+            this.Load += new System.EventHandler(this.FuelTypeCRUD_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

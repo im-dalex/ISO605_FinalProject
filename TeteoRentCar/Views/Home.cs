@@ -50,7 +50,32 @@ namespace TeteoRentCar.Views
 
         private void brandBtn_Click(object sender, EventArgs e)
         {
-            //ActionControl.OpenChildForm(new Login(), containerPanel);
+            ActionControl.OpenChildForm(new VehicleBrandCRUD(), containerPanel);
+        }
+
+        private void modelBtn_Click(object sender, EventArgs e)
+        {
+            ActionControl.OpenChildForm(new VehicleModelCRUD(), containerPanel);
+        }
+
+        private void fuelBtn_Click(object sender, EventArgs e)
+        {
+            ActionControl.OpenChildForm(new FuelTypeCRUD(), containerPanel);
+        }
+
+        private void vehicleBtn_Click(object sender, EventArgs e)
+        {
+            ActionControl.OpenChildForm(new VehicleCRUD(), containerPanel);
+        }
+
+        private void customerBtn_Click(object sender, EventArgs e)
+        {
+            ActionControl.OpenChildForm(new CustomerCRUD(), containerPanel);
+        }
+
+        private void employeeBtn_Click(object sender, EventArgs e)
+        {
+            ActionControl.OpenChildForm(new EmployeeCRUD(), containerPanel);
         }
     }
 }

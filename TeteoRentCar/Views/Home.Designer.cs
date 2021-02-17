@@ -221,6 +221,7 @@ namespace TeteoRentCar.Views
             this.employeeBtn.Text = "Empleados";
             this.employeeBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.employeeBtn.UseVisualStyleBackColor = true;
+            this.employeeBtn.Click += new System.EventHandler(this.employeeBtn_Click);
             // 
             // customerBtn
             // 
@@ -237,6 +238,7 @@ namespace TeteoRentCar.Views
             this.customerBtn.Text = "Clientes";
             this.customerBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.customerBtn.UseVisualStyleBackColor = true;
+            this.customerBtn.Click += new System.EventHandler(this.customerBtn_Click);
             // 
             // vehicleBtn
             // 
@@ -253,6 +255,7 @@ namespace TeteoRentCar.Views
             this.vehicleBtn.Text = "Vehiculos";
             this.vehicleBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.vehicleBtn.UseVisualStyleBackColor = true;
+            this.vehicleBtn.Click += new System.EventHandler(this.vehicleBtn_Click);
             // 
             // fuelBtn
             // 
@@ -269,6 +272,7 @@ namespace TeteoRentCar.Views
             this.fuelBtn.Text = "Combustibles";
             this.fuelBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.fuelBtn.UseVisualStyleBackColor = true;
+            this.fuelBtn.Click += new System.EventHandler(this.fuelBtn_Click);
             // 
             // modelBtn
             // 
@@ -285,6 +289,7 @@ namespace TeteoRentCar.Views
             this.modelBtn.Text = "Modelos";
             this.modelBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.modelBtn.UseVisualStyleBackColor = true;
+            this.modelBtn.Click += new System.EventHandler(this.modelBtn_Click);
             // 
             // brandBtn
             // 
