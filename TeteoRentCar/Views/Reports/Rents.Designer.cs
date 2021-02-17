@@ -82,7 +82,7 @@ namespace TeteoRentCar
             // 
             this.SearchTextBox.Location = new System.Drawing.Point(12, 116);
             this.SearchTextBox.Name = "SearchTextBox";
-            this.SearchTextBox.PlaceholderText = "Buscar cliente por cedula";
+            this.SearchTextBox.PlaceholderText = "Buscar cliente por cedula o nombre";
             this.SearchTextBox.Size = new System.Drawing.Size(251, 27);
             this.SearchTextBox.TabIndex = 3;
             this.SearchTextBox.TextChanged += new System.EventHandler(this.SearchTextBox_TextChanged);

@@ -118,6 +118,8 @@ namespace TeteoRentCar.Views.Maintenance
 
         private async void DeleteBtn_Click(object sender, EventArgs e)
         {
+            if (dataGridView1.CurrentRow == null) return;
+
             VehicleType vehicleType = (VehicleType)dataGridView1.CurrentRow.DataBoundItem;
 
             DialogResult dialogResult = MessageBox.Show($"Esta seguro que quiere eliminar el registro #{vehicleType.Id}?", "Eliminar",
@@ -157,6 +159,8 @@ namespace TeteoRentCar.Views.Maintenance
 
         private void EditBtn_Click(object sender, EventArgs e)
         {
+            if (dataGridView1.CurrentRow == null) return;
+
             EditionModeToggle();
         }
 

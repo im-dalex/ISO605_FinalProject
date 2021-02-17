@@ -109,7 +109,7 @@ namespace TeteoRentCar
 
             Data = new List<RentDetailVM>();
 
-            foreach (var rent in await _rents.GetAll())
+            foreach (var rent in await _rents.GetAll(nameof(Employee),nameof(Vehicle),nameof(Customer), nameof(Vehicle) + "." + nameof(Vehicle.VehicleModel)))
                 Data.Add(new RentDetailVM(rent));
 
             GridRents.DataSource = Data.ToDataTable();
@@ -151,8 +151,9 @@ namespace TeteoRentCar
 
         private void SearchTextBox_TextChanged(object sender, EventArgs e)
         {
-            string searchString = SearchTextBox.Text.Trim();               
-            (GridRents.DataSource as DataTable).DefaultView.RowFilter = string.Format("CedulaCliente LIKE '%{0}%'", searchString);
+            string searchString = SearchTextBox.Text.Trim(); 
+            (GridRents.DataSource as DataTable).DefaultView.RowFilter = string.Format("CedulaCliente LIKE '%{0}%' OR Cliente LIKE '%{0}%'", searchString);
+
 
             //if (searchString != string.Empty)
             //{
