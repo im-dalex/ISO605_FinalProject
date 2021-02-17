@@ -22,11 +22,11 @@ namespace TeteoRentCar
         {
             if (txtUser.Text.Trim() == string.Empty || txtPwd.Text.Trim() == string.Empty)
             {
-                MessageBox.Show("Ningun dato debe estar vacio. lol", "Login error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Ningun dato debe estar vacio.", "Login error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            if (txtUser.Text.Trim() != "Admin" || txtPwd.Text.Trim() != "12345")
+            if (txtUser.Text.Trim() != "admin" || txtPwd.Text.Trim() != "123456")
             {
                MessageBox.Show("Los datos son incorrectos. Intentelo nuevamente", "Login error", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;

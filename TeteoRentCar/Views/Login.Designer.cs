@@ -56,9 +56,9 @@ namespace TeteoRentCar
             this.label1.Location = new System.Drawing.Point(142, 180);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(75, 20);
+            this.label1.Size = new System.Drawing.Size(62, 20);
             this.label1.TabIndex = 4;
-            this.label1.Text = "Username";
+            this.label1.Text = "Usuario:";
             // 
             // label2
             // 
@@ -66,9 +66,9 @@ namespace TeteoRentCar
             this.label2.Location = new System.Drawing.Point(142, 240);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(70, 20);
+            this.label2.Size = new System.Drawing.Size(86, 20);
             this.label2.TabIndex = 6;
-            this.label2.Text = "Password";
+            this.label2.Text = "Contraseña:";
             // 
             // txtPwd
             // 
@@ -86,14 +86,14 @@ namespace TeteoRentCar
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(100, 35);
             this.btnLogin.TabIndex = 7;
-            this.btnLogin.Text = "Login";
+            this.btnLogin.Text = "Ingresar";
             this.btnLogin.UseVisualStyleBackColor = true;
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(178, 26);
+            this.pictureBox1.Location = new System.Drawing.Point(191, 29);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(125, 122);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -104,6 +104,7 @@ namespace TeteoRentCar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(504, 408);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnLogin);

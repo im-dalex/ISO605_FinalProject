@@ -214,6 +214,7 @@ namespace TeteoRentCar.Views.Services
             this.DeleteBtn.TabIndex = 23;
             this.DeleteBtn.Text = "Eliminar";
             this.DeleteBtn.UseVisualStyleBackColor = true;
+            this.DeleteBtn.Click += new System.EventHandler(this.DeleteBtn_Click);
             // 
             // EditBtn
             // 
@@ -223,6 +224,7 @@ namespace TeteoRentCar.Views.Services
             this.EditBtn.TabIndex = 22;
             this.EditBtn.Text = "Editar";
             this.EditBtn.UseVisualStyleBackColor = true;
+            this.EditBtn.Click += new System.EventHandler(this.EditBtn_Click);
             // 
             // rentDataGrid
             // 
@@ -235,6 +237,7 @@ namespace TeteoRentCar.Views.Services
             this.rentDataGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.rentDataGrid.Size = new System.Drawing.Size(641, 291);
             this.rentDataGrid.TabIndex = 21;
+            this.rentDataGrid.SelectionChanged += new System.EventHandler(this.rentDataGrid_SelectionChanged);
             // 
             // btnSave
             // 
