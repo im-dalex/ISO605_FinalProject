@@ -123,6 +123,7 @@ namespace TeteoRentCar.Views
             this.returnBtn.Text = "Devolución";
             this.returnBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.returnBtn.UseVisualStyleBackColor = true;
+            this.returnBtn.Click += new System.EventHandler(this.returnBtn_Click);
             // 
             // inspectionBtn
             // 
@@ -139,6 +140,7 @@ namespace TeteoRentCar.Views
             this.inspectionBtn.Text = "Inspección";
             this.inspectionBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.inspectionBtn.UseVisualStyleBackColor = true;
+            this.inspectionBtn.Click += new System.EventHandler(this.inspectionBtn_Click);
             // 
             // rentBtn
             // 
@@ -155,6 +157,7 @@ namespace TeteoRentCar.Views
             this.rentBtn.Text = "Renta";
             this.rentBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.rentBtn.UseVisualStyleBackColor = true;
+            this.rentBtn.Click += new System.EventHandler(this.rentBtn_Click);
             // 
             // processBtn
             // 

@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using TeteoRentCar.Utilities;
 using TeteoRentCar.Views.Maintenance;
+using TeteoRentCar.Views.Services;
 
 namespace TeteoRentCar.Views
 {
@@ -76,6 +77,21 @@ namespace TeteoRentCar.Views
         private void employeeBtn_Click(object sender, EventArgs e)
         {
             ActionControl.OpenChildForm(new EmployeeCRUD(), containerPanel);
+        }
+
+        private void rentBtn_Click(object sender, EventArgs e)
+        {
+            ActionControl.OpenChildForm(new RentDetail(), containerPanel);
+        }
+
+        private void inspectionBtn_Click(object sender, EventArgs e)
+        {
+            ActionControl.OpenChildForm(new Inspection(), containerPanel);
+        }
+
+        private void returnBtn_Click(object sender, EventArgs e)
+        {
+            ActionControl.OpenChildForm(new ReturnDetail(), containerPanel);
         }
     }
 }

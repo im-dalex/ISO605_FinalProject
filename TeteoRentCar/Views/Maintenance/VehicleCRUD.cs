@@ -73,13 +73,11 @@ namespace TeteoRentCar.Views.Maintenance
 
         private void CleanForm()
         {
-            ActionControl.ClearTextBoxes(txtDescription);
-            ActionControl.ClearTextBoxes(txtChassis);
-            ActionControl.ClearTextBoxes(txtLicense);
-            ActionControl.ClearTextBoxes(txtMotor);
+            TextBox[] controls = { txtDescription, txtChassis, txtLicense, txtMotor };
+            ActionControl.ClearTextBoxes(controls);
             cbStatus.SelectedIndex = 0;
-            cbModel.SelectedIndex = 0;
-            cbFuel.SelectedIndex = 0;
+            //cbModel.SelectedIndex = 0;
+            //cbFuel.SelectedIndex = 0;
         }
 
         private async Task SaveEntity()
