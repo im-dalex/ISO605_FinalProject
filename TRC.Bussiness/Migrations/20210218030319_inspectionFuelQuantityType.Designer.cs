@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TRC.Bussiness.Context;
 
 namespace TRC.Bussiness.Migrations
 {
     [DbContext(typeof(TRCDbContext))]
-    partial class TRCDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210218030319_inspectionFuelQuantityType")]
+    partial class inspectionFuelQuantityType
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

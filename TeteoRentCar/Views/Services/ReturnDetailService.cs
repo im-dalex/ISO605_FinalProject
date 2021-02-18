@@ -18,8 +18,6 @@ namespace TeteoRentCar.Views.Services
     {
         private GenericRepository<ReturnDetail> _returnDetail;
         private GenericRepository<RentDetail> _rentDetail;
-        private GenericRepository<Customer> _customer;
-        private GenericRepository<Vehicle> _vehicle;
         private bool _editionMode;
         private ReturnDetail _entityToEdit;
         private int _gridViewLastSelectedRowIndex = 0;
@@ -116,6 +114,7 @@ namespace TeteoRentCar.Views.Services
                 {
                     var rent = await _rentDetail.Get(returnDetail.RentDetailId);
                     rent.Status = "D";
+                    rent.Vehicle.Status = "A";
                     _rentDetail.Update(rent);
                     await _rentDetail.SaveAsync();
                 }

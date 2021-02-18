@@ -97,7 +97,7 @@ namespace TeteoRentCar.Views.Maintenance
         {
             if (!IsFormValid())
             {
-                string msj = "De lo mio, ten en cuenta que no me puedes de dejar los datos vacios.";
+                string msj = "Todos los campos son requeridos";
                 MessageBox.Show(msj, "Revise los datos!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }

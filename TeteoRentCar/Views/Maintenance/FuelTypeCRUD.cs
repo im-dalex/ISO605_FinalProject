@@ -77,7 +77,7 @@ namespace TeteoRentCar.Views.Maintenance
         {
             if (!IsFormValid())
             {
-                string msj = "De lo mio, ten en cuenta que no me puedes de dejar la descripcion vacia.";
+                string msj = "No puedes de dejar la descripcion vacia.";
                 MessageBox.Show(msj, "Revise los datos!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }

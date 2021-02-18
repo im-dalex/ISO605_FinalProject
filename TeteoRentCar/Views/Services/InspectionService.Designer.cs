@@ -30,7 +30,6 @@ namespace TeteoRentCar.Views.Services
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.clConditions = new System.Windows.Forms.CheckedListBox();
             this.cbFuelQuantity = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.dpDate = new System.Windows.Forms.DateTimePicker();
@@ -44,6 +43,10 @@ namespace TeteoRentCar.Views.Services
             this.btnSave = new System.Windows.Forms.Button();
             this.DeleteBtn = new System.Windows.Forms.Button();
             this.EditBtn = new System.Windows.Forms.Button();
+            this.cbHasSpareTire = new System.Windows.Forms.CheckBox();
+            this.cbHasBrokenMirror = new System.Windows.Forms.CheckBox();
+            this.cbIsGrated = new System.Windows.Forms.CheckBox();
+            this.cbHasHydraulicCat = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.rentDataGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.inspectionDataGrid)).BeginInit();
             this.SuspendLayout();
@@ -51,25 +54,11 @@ namespace TeteoRentCar.Views.Services
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(717, 122);
+            this.label1.Location = new System.Drawing.Point(717, 118);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(93, 20);
             this.label1.TabIndex = 0;
             this.label1.Text = "Condiciones:";
-            // 
-            // clConditions
-            // 
-            this.clConditions.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.clConditions.FormattingEnabled = true;
-            this.clConditions.Items.AddRange(new object[] {
-            "Gato Hidraulico",
-            "Cristales Rotos",
-            "Goma de Repuesta",
-            "Rallado"});
-            this.clConditions.Location = new System.Drawing.Point(727, 145);
-            this.clConditions.Name = "clConditions";
-            this.clConditions.Size = new System.Drawing.Size(218, 114);
-            this.clConditions.TabIndex = 1;
             // 
             // cbFuelQuantity
             // 
@@ -182,6 +171,7 @@ namespace TeteoRentCar.Views.Services
             this.btnSave.TabIndex = 55;
             this.btnSave.Text = "Guardar";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // DeleteBtn
             // 
@@ -191,6 +181,7 @@ namespace TeteoRentCar.Views.Services
             this.DeleteBtn.TabIndex = 54;
             this.DeleteBtn.Text = "Eliminar";
             this.DeleteBtn.UseVisualStyleBackColor = true;
+            this.DeleteBtn.Click += new System.EventHandler(this.DeleteBtn_Click);
             // 
             // EditBtn
             // 
@@ -200,13 +191,58 @@ namespace TeteoRentCar.Views.Services
             this.EditBtn.TabIndex = 53;
             this.EditBtn.Text = "Editar";
             this.EditBtn.UseVisualStyleBackColor = true;
+            this.EditBtn.Click += new System.EventHandler(this.EditBtn_Click);
             // 
-            // Inspection
+            // cbHasSpareTire
+            // 
+            this.cbHasSpareTire.AutoSize = true;
+            this.cbHasSpareTire.Location = new System.Drawing.Point(727, 171);
+            this.cbHasSpareTire.Name = "cbHasSpareTire";
+            this.cbHasSpareTire.Size = new System.Drawing.Size(157, 24);
+            this.cbHasSpareTire.TabIndex = 56;
+            this.cbHasSpareTire.Text = "Goma de Repuesta";
+            this.cbHasSpareTire.UseVisualStyleBackColor = true;
+            // 
+            // cbHasBrokenMirror
+            // 
+            this.cbHasBrokenMirror.AutoSize = true;
+            this.cbHasBrokenMirror.Location = new System.Drawing.Point(727, 201);
+            this.cbHasBrokenMirror.Name = "cbHasBrokenMirror";
+            this.cbHasBrokenMirror.Size = new System.Drawing.Size(128, 24);
+            this.cbHasBrokenMirror.TabIndex = 57;
+            this.cbHasBrokenMirror.Text = "Cristales Rotos";
+            this.cbHasBrokenMirror.UseVisualStyleBackColor = true;
+            // 
+            // cbIsGrated
+            // 
+            this.cbIsGrated.AutoSize = true;
+            this.cbIsGrated.Location = new System.Drawing.Point(727, 231);
+            this.cbIsGrated.Name = "cbIsGrated";
+            this.cbIsGrated.Size = new System.Drawing.Size(82, 24);
+            this.cbIsGrated.TabIndex = 58;
+            this.cbIsGrated.Text = "Rallado";
+            this.cbIsGrated.UseVisualStyleBackColor = true;
+            // 
+            // cbHasHydraulicCat
+            // 
+            this.cbHasHydraulicCat.AutoSize = true;
+            this.cbHasHydraulicCat.Location = new System.Drawing.Point(727, 141);
+            this.cbHasHydraulicCat.Name = "cbHasHydraulicCat";
+            this.cbHasHydraulicCat.Size = new System.Drawing.Size(136, 24);
+            this.cbHasHydraulicCat.TabIndex = 59;
+            this.cbHasHydraulicCat.Text = "Gato Hidraulico";
+            this.cbHasHydraulicCat.UseVisualStyleBackColor = true;
+            // 
+            // InspectionService
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(1054, 573);
+            this.Controls.Add(this.cbHasHydraulicCat);
+            this.Controls.Add(this.cbIsGrated);
+            this.Controls.Add(this.cbHasBrokenMirror);
+            this.Controls.Add(this.cbHasSpareTire);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.DeleteBtn);
             this.Controls.Add(this.EditBtn);
@@ -220,10 +256,10 @@ namespace TeteoRentCar.Views.Services
             this.Controls.Add(this.label4);
             this.Controls.Add(this.cbFuelQuantity);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.clConditions);
             this.Controls.Add(this.label1);
-            this.Name = "Inspection";
+            this.Name = "InspectionService";
             this.Text = "Inspection";
+            this.Load += new System.EventHandler(this.InspectionService_Load);
             ((System.ComponentModel.ISupportInitialize)(this.rentDataGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.inspectionDataGrid)).EndInit();
             this.ResumeLayout(false);
@@ -234,7 +270,6 @@ namespace TeteoRentCar.Views.Services
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.CheckedListBox clConditions;
         private System.Windows.Forms.ComboBox cbFuelQuantity;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.DateTimePicker dpDate;
@@ -248,5 +283,9 @@ namespace TeteoRentCar.Views.Services
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button DeleteBtn;
         private System.Windows.Forms.Button EditBtn;
+        private System.Windows.Forms.CheckBox cbHasSpareTire;
+        private System.Windows.Forms.CheckBox cbHasBrokenMirror;
+        private System.Windows.Forms.CheckBox cbIsGrated;
+        private System.Windows.Forms.CheckBox cbHasHydraulicCat;
     }
 }

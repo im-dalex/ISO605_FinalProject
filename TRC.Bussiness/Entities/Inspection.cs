@@ -14,7 +14,7 @@ namespace BRC.Bussiness.Entities
         //public int CustomerId { get; set; }
         public int RentDetailId { get; set; }
         public bool IsGrated { get; set; }
-        public double FuelQuantity { get; set; }
+        public string FuelQuantity { get; set; }
         public bool HasHydraulicCat { get; set; }
         public bool HasSpareTire { get; set; }
         public bool HasBrokenMirror { get; set; }

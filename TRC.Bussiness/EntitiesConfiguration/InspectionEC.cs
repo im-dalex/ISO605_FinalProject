@@ -23,6 +23,8 @@ namespace TRC.Bussiness.EntitiesConfiguration
                 .IsRequired();
 
             builder.Property(b => b.FuelQuantity)
+                .HasMaxLength(50)
+                .IsUnicode(false)
                 .IsRequired();
 
             builder.Property(b => b.IsGrated)
