@@ -13,7 +13,10 @@ namespace TeteoRentCar.Views
             InitializeComponent();
             HideSubModulePanel();
         }
-
+        private void Home_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
         private void HideSubModulePanel()
         {
             maintenanceSubModulePanel.Visible = false;
@@ -93,5 +96,6 @@ namespace TeteoRentCar.Views
         {
             ActionControl.OpenChildForm(new ReturnDetailService(), containerPanel);
         }
+
     }
 }
