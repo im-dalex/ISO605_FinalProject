@@ -21,6 +21,8 @@ namespace TRC.Bussiness.ViewModels
             Matricula = rent.Vehicle.NoLicensePlate;
             NoChasis = rent.Vehicle.NoChassis;
             NoMotor = rent.Vehicle.NoMotor;
+            DiasRenta = rent.RentDays;
+            Comentario = rent.Comment;
         }
         public DateTime Fecha { get; set; }
         public string Cliente { get; set; }
@@ -36,5 +38,8 @@ namespace TRC.Bussiness.ViewModels
         public string Matricula { get; set; }
         [DisplayName("No. Motor")]
         public string NoMotor { get; set; }
+        [DisplayName("Dias de renta")]
+        public int DiasRenta { get; set; }
+        public string Comentario { get; set; }
     }
 }

@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -51,8 +52,8 @@ namespace TeteoRentCar
             //            VehicleType = new VehicleType { Id = 1, Description = "Avion de Utesa"} }
             //    },
             //    RentDate = DateTime.Now
-                
-            
+
+
             //});
 
             //rents.Add(new RentDetail
@@ -107,13 +108,22 @@ namespace TeteoRentCar
             //});
             #endregion
 
+            await RefreshGridView(null, null);
+        }
+
+        private async Task RefreshGridView(DateTime? since, DateTime? to)
+        {
             Data = new List<RentDetailVM>();
 
-            foreach (var rent in await _rents.GetAll(nameof(Employee),nameof(Vehicle),nameof(Customer), nameof(Vehicle) + "." + nameof(Vehicle.VehicleModel)))
+            var rents = await _rents.GetAll(nameof(Employee), nameof(Vehicle), nameof(Customer), nameof(Vehicle) + "." + nameof(Vehicle.VehicleModel));
+                
+            if (since != null && to != null)
+                rents = rents.Where(r => r.RentDate >= since && r.RentDate <= to).ToList();
+
+            foreach (var rent in rents)
                 Data.Add(new RentDetailVM(rent));
 
             GridRents.DataSource = Data.ToDataTable();
-
         }
 
         private void PdfBtn_Click(object sender, EventArgs e)
@@ -178,6 +188,11 @@ namespace TeteoRentCar
             //        }
             //    }
             //}
+        }
+
+        private async void button1_Click(object sender, EventArgs e)
+        {
+           await RefreshGridView(tpDesde.Value, tpHasta.Value);
         }
 
     }

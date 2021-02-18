@@ -416,6 +416,7 @@ namespace TeteoRentCar.Views
             this.Name = "Home";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Home";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Home_FormClosing);
             this.sideBar.ResumeLayout(false);
             this.processSubModulePanel.ResumeLayout(false);
             this.maintenanceSubModulePanel.ResumeLayout(false);
