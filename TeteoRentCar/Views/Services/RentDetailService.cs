@@ -56,6 +56,7 @@ namespace TeteoRentCar.Views.Services
             cbStatus.SelectedIndex = 0;
             nPriceByDay.Value = 0;
             nRentDays.Value = 0;
+            dpRentDate.Value = DateTime.Today;
             if (cbCustomer.Items.Count > 0)
                 cbCustomer.SelectedIndex = 0;
             if (cbEmployee.Items.Count > 0)
@@ -96,8 +97,13 @@ namespace TeteoRentCar.Views.Services
                     CustomerId = int.TryParse(cbCustomer.SelectedValue.ToString(), out int idCustomer) ? idCustomer : 0
                 };
                 await _rentDetail.Add(rentDetail);
-                //if (rentDetail.Status == "A")
-                //    rentDetail.Vehicle.Status = "R";
+                if (rentDetail.Status == "A")
+                {
+                    var vehicle = await _vehicle.Get(rentDetail.VehicleId);
+                    vehicle.Status = "R";
+                    _vehicle.Update(vehicle);
+                    await _vehicle.SaveAsync();
+                }
             } else {
                 _entityToEdit.RentDate = dpRentDate.Value;
                 _entityToEdit.PriceByDay = (double)nPriceByDay.Value;
@@ -163,8 +169,8 @@ namespace TeteoRentCar.Views.Services
                 if (dialogResult != DialogResult.Yes) 
                     return;
 
-                await EditionModeToggle();
                 await SaveEntity(true);
+                await EditionModeToggle();
             }
             else
             {

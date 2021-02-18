@@ -54,6 +54,7 @@ namespace TeteoRentCar.Views.Services
             this.btnSave.TabIndex = 46;
             this.btnSave.Text = "Guardar";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // label9
             // 
@@ -73,6 +74,7 @@ namespace TeteoRentCar.Views.Services
             this.DeleteBtn.TabIndex = 44;
             this.DeleteBtn.Text = "Eliminar";
             this.DeleteBtn.UseVisualStyleBackColor = true;
+            this.DeleteBtn.Click += new System.EventHandler(this.DeleteBtn_Click);
             // 
             // EditBtn
             // 
@@ -82,6 +84,7 @@ namespace TeteoRentCar.Views.Services
             this.EditBtn.TabIndex = 43;
             this.EditBtn.Text = "Editar";
             this.EditBtn.UseVisualStyleBackColor = true;
+            this.EditBtn.Click += new System.EventHandler(this.EditBtn_Click);
             // 
             // returnDataGrid
             // 
@@ -94,11 +97,15 @@ namespace TeteoRentCar.Views.Services
             this.returnDataGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.returnDataGrid.Size = new System.Drawing.Size(641, 229);
             this.returnDataGrid.TabIndex = 42;
+            this.returnDataGrid.SelectionChanged += new System.EventHandler(this.returnDataGrid_SelectionChanged);
             // 
             // cbStatus
             // 
             this.cbStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbStatus.FormattingEnabled = true;
+            this.cbStatus.Items.AddRange(new object[] {
+            "A",
+            "I"});
             this.cbStatus.Location = new System.Drawing.Point(716, 403);
             this.cbStatus.Name = "cbStatus";
             this.cbStatus.Size = new System.Drawing.Size(160, 28);
@@ -167,8 +174,9 @@ namespace TeteoRentCar.Views.Services
             this.rentDataGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.rentDataGrid.Size = new System.Drawing.Size(641, 229);
             this.rentDataGrid.TabIndex = 47;
+            this.rentDataGrid.SelectionChanged += new System.EventHandler(this.rentDataGrid_SelectionChanged);
             // 
-            // ReturnDetail
+            // ReturnDetailService
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -187,8 +195,9 @@ namespace TeteoRentCar.Views.Services
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label1);
-            this.Name = "ReturnDetail";
+            this.Name = "ReturnDetailService";
             this.Text = "ReturnDetail";
+            this.Load += new System.EventHandler(this.ReturnDetailService_Load);
             ((System.ComponentModel.ISupportInitialize)(this.returnDataGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rentDataGrid)).EndInit();
             this.ResumeLayout(false);
